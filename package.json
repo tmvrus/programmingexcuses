@@ -1,0 +1,19 @@
+{
+  "name": "programmingexcuses",
+  "version": "1.0.0",
+  "description": "Just every day programming excuses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'not implemented'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmvrus/programmingexcuses.git"
+  },
+  "author": "tmvrus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tmvrus/programmingexcuses/issues"
+  },
+  "homepage": "https://github.com/tmvrus/programmingexcuses#readme"
+}
