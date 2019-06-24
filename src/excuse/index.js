@@ -16,13 +16,9 @@ const defaultOptions = {
 
 module.exports = {
     getExcuse(config) {
-        console.log(111, config);
         return new Promise((resolve, reject) => {
-            console.log(11);
             let req = http.get(config.url, defaultOptions, (res) => {
-                console.log(22);
                 if (res.statusCode !== httpStatusCodes.OK) {
-                    console.log(1);
                     res.resume();
                     reject(new Error(`Got unexpected status code ${res.statusCode}, with message '${res.statusMessage}', for ${config.url}`));
                     return
@@ -30,7 +26,6 @@ module.exports = {
 
                 let responseChunks = [];
                 res.on('data', (chunk) => {
-                    console.log('data');
                     if (chunk) {
                         responseChunks.push(chunk);
                     }
@@ -38,13 +33,11 @@ module.exports = {
 
                 res.on('end', () => {
                     if (!res.complete) {
-                        console.log('end');
                         reject(new Error(`Connection terminated while read, for ${config.url}`));
                         return;
                     }
 
                     if (responseChunks.length === 0) {
-                        console.log(3);
                         reject(new Error(`Empty response result for ${config.url}`));
                         return;
                     }
@@ -55,13 +48,11 @@ module.exports = {
                     part = part.slice(part.indexOf('>') + 1);
 
                     if (part.length <= 10) {
-                        console.log(4);
                         reject(new Error(`Invalid parsing result '${part}' for ${config.url}, response ${responseChunks}`))
                         return;
                     }
 
                     resolve(part);
-
                 });
             });
 
