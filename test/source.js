@@ -21,10 +21,8 @@ let testCases = [{
 
 let httpServer;
 
-
-describe('hooks', () => {
-
-        console.log('create http');
+describe('Run test cases', () => {
+    before(() => {
         httpServer = http.createServer((res, req) => {
             let data = testCases.shift();
             if (data === undefined) {
@@ -37,10 +35,10 @@ describe('hooks', () => {
             res.end();
         });
 
-        console.log('listen http');
         httpServer.listen(listenConfig, (err) => {
             console.log(err);
         });
+    });
 
     after((done) => {
         httpServer.close(done);
@@ -48,10 +46,9 @@ describe('hooks', () => {
 
     describe('First test case', async () => {
         try {
-            //let sleep = await new Promise(done => setTimeout(done, 1000));
             let text = await excuseFinder.getExcuse({url : 'http://127.0.0.1:8088/'});
             it('Should get excuse from first test case', (done) => {
-                assert.equal(text, '');
+                assert.equal(text, 'I did a quick fix last time but it broke when we rebooted');
                 done();
             });
         } catch (err) {
