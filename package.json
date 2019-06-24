@@ -4,7 +4,7 @@
   "description": "Just every day programming excuses",
   "main": "index.js",
   "scripts": {
-    "test": "echo 'not implemented'"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/tmvrus/programmingexcuses/issues"
   },
-  "homepage": "https://github.com/tmvrus/programmingexcuses#readme"
+  "homepage": "https://github.com/tmvrus/programmingexcuses#readme",
+  "dependencies": {
+    "http-status-codes": "^1.3.2"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  }
 }
